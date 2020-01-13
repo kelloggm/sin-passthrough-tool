@@ -89,6 +89,7 @@ public class EC2SSHServer extends SSHServer {
 
 	private Image getUbuntuImage() {
 		final DescribeImagesRequest describeImagesRequest = new DescribeImagesRequest();
+                // TRUE POSITIVE: https://github.com/activeviam/sin-passthrough-tool/issues/1
 		describeImagesRequest.getFilters().add(new Filter("name").withValues("ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"));
 		final DescribeImagesResult describeImagesResult = aws.describeImages(describeImagesRequest);
 		final List<Image> images = describeImagesResult.getImages();
